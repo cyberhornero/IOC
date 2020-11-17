@@ -11,7 +11,7 @@ dia_hoy = dia.strftime("%Y/%m/%d")
 
 def scrape_iocdb_domains(choice=""):
     url = "https://labs.inquest.net/api/iocdb/list"
-    response = requests.request("GET", url)
+    response = requests.get(url, verify=False)
     res = json.loads(response.text)
     results=[]
     dia = datetime.now()
@@ -28,7 +28,7 @@ def print_select(var):
     InQuest Lab's | Indicadores de Compromiso de Twitter Github & Blogs
     Parametro para la Eleccion = "ipaddress", "url", "domain", "hash".
     '''
-    results = scrape_iocdb_domains(choice=var);
+    results = scrape_iocdb_domains(choice=var)
     x=0
 
     for item in results:
